@@ -67,10 +67,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Hello, Chloe</h1>
+        <h1 id="greeting">Hello, Chloe</h1>
         <div class="links">
             <a href="https://www.youtube.com/" target="_blank">YouTube</a>
-            <a href="https://studio.youtube.com" target="_blank">YouTube Studio</a>
+            <a href="https://studio.youtube.com/" target="_blank">YouTube Studio</a>
             <a href="https://www.dropout.tv/" target="_blank">Dropout TV</a>
         </div>
         <div class="search-bar">
@@ -80,7 +80,23 @@
             </form>
         </div>
         <a href="https://github.com/ChellChlo/ChellChlo.github.io/blob/main/index.html" target="_blank">This Site's Code</a>
-        </div>
     </div>
+    <script>
+        function getPSTGreeting() {
+            let date = new Date();
+            let utcHour = date.getUTCHours();
+            let pstHour = (utcHour + 24 - 7) % 24; // Convert UTC hour to PST hour (UTC-7)
+
+            if (pstHour < 12) {
+                return "Good morning, Chloe";
+            } else if (pstHour < 18) {
+                return "Good afternoon, Chloe";
+            } else {
+                return "Good evening, Chloe";
+            }
+        }
+
+        document.getElementById('greeting').textContent = getPSTGreeting();
+    </script>
 </body>
 </html>
